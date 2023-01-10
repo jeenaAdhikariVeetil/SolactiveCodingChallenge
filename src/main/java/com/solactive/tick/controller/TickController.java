@@ -82,7 +82,7 @@ public class TickController {
 	 * @return HTTP status 403 when there are errors during export
 	 */
 
-	@GetMapping("/ticks/csv/{ric}")
+	@GetMapping("/csv/ticks/{ric}")
 	public void exportToCSV(@PathVariable String ric, HttpServletResponse httpServletResponse) throws IOException {
 		tickService.exportToCSV(ric, httpServletResponse);
 	}

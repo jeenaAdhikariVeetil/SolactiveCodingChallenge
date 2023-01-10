@@ -11,6 +11,7 @@ import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
+import com.solactive.tick.constant.TickConstant;
 import com.solactive.tick.consumer.TickConsumer;
 import com.solactive.tick.model.Tick;
 
@@ -26,7 +27,9 @@ public class TickCSVExporter {
 
 	public void export(String ric, HttpServletResponse httpServletResponse) throws IOException {
 		
-		List<Tick> listTicks = TickConsumer.getTickMap().get(ric);
+		List<Tick> listTicks=TickConsumer.getTickMap().get(ric);
+		if(listTicks!=null)
+		{
 		String fileName = "tickValues_" + ric + ".csv";
 		httpServletResponse.setContentType("text/csv");
 		String headerKey = "Content-Disposition";
@@ -42,8 +45,12 @@ public class TickCSVExporter {
 			if(tick.getClosePrice()!=0)
 			csvWriter.write(tick, mapping);
 		}
-		
 		csvWriter.close();
+		}
+		else
+		{
+			throw new NullPointerException(TickConstant.EMPTY_EXPORT);
+		}
 		
 	}
 

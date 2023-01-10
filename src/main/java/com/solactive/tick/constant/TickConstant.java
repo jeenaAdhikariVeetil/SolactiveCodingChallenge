@@ -14,6 +14,7 @@ public class TickConstant {
 	public static final String RIC_EMPTY="RIC can not be a blank value";
 	public static final String INVALID_TICKS="Please provide the valid tick values";
 	public static final String EXPORT_ERROR="Error occurred during export to CSV";
+	public static final String EMPTY_EXPORT="No Data to export";
 	
 	
 }

@@ -31,5 +31,9 @@ public class GlobalException extends ResponseEntityExceptionHandler {
 	public ResponseEntity<String> handleException(IOException ex) {
 		return new ResponseEntity<String>(TickConstant.EXPORT_ERROR, HttpStatus.FORBIDDEN);
 	}
+	@ExceptionHandler(NullPointerException.class)
+	public ResponseEntity<String> handleException(NullPointerException ex) {
+		return new ResponseEntity<String>(TickConstant.EMPTY_EXPORT, HttpStatus.NO_CONTENT);
+	}
 
 }
