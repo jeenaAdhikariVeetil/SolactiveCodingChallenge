@@ -15,9 +15,9 @@ Description
 
 3. Only ADMIN users will have previlege to lookup the tick values for a specified ric with API of /solactive/tics/ric
 
-4.There is an option for users to export the tick values for a specified ric where close price is not empty.
+4. There is an option for users to export the tick values for a specified ric where close price is not empty.
 
-Tick values will be exported as CSV files in users local repository.
+     Tick values will be exported as CSV files in users local repository.
 
 5. swagger implementation has been done for a better understanding and testing. It can be accessed via following url once the application is up.
 
@@ -48,17 +48,17 @@ Technologies Used
 
 4. RabbitMQ
 
-5.Swagger
+5. Swagger
 
-6.Spring boot test
+6. Spring boot test
 
 Improvements
 ------------
 1. To imporve the latency and throughput of the application Work Queues (aka: Task Queues) or LAMAX Disruptor could be introduced
  
- We can create concurrent consumers to easily parallelise the work
+     We can create concurrent consumers to easily parallelise the work
  
- 2. More intergation tests could be added
+2. More intergation tests could be added
  
  
  Thank you!
