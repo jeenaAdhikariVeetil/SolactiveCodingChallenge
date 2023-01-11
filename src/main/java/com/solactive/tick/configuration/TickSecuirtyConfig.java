@@ -38,7 +38,7 @@ public class TickSecuirtyConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests()
-			.requestMatchers("/solactive/csv/ticks/**", "/solactive/ticks").permitAll()
+			.requestMatchers("/swagger-ui","/solactive/csv/ticks/**", "/solactive/ticks").permitAll()
 			.requestMatchers("/solactive/ticks/**").hasRole("ADMIN")
 			.anyRequest().authenticated().and().formLogin();
 			

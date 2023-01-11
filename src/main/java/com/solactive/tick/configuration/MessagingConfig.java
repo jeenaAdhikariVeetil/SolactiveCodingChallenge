@@ -15,6 +15,8 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.solactive.tick.constant.TickConstant;
+
 /**
  * @author Jeena A V
  *
@@ -25,17 +27,17 @@ public class MessagingConfig {
 
 	@Bean
 	public Queue queue() {
-		return new Queue("tick_queue");
+		return new Queue(TickConstant.QUEUE_NAME);
 	}
 
 	@Bean
 	public TopicExchange exchange() {
-		return new TopicExchange("tick_topic");
+		return new TopicExchange(TickConstant.TOPIC_NAME);
 	}
 
 	@Bean
 	public Binding binding(Queue queue, TopicExchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with("tick_routingKey");
+		return BindingBuilder.bind(queue).to(exchange).with(TickConstant.ROUTING_KEY);
 	}
 
 	@Bean

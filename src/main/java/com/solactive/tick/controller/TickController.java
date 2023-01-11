@@ -65,7 +65,7 @@ public class TickController {
 	/**
 	 * 
 	 * @param ric
-	 * @return HTTP status 200 when tick values are retried
+	 * @return HTTP status 200 when tick values are retrieved
 	 */
 
 	@GetMapping("/ticks/{ric}")

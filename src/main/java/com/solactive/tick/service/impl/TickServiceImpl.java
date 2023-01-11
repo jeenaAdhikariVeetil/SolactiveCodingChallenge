@@ -10,6 +10,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.solactive.tick.constant.TickConstant;
 import com.solactive.tick.consumer.TickConsumer;
 import com.solactive.tick.export.TickCSVExporter;
 import com.solactive.tick.model.Tick;
@@ -33,7 +34,7 @@ public class TickServiceImpl implements TickService {
 
 	@Override
 	public void insertTickvalues(Tick tick) {
-		rabbitTemplate.convertAndSend("tick_topic", "tick_routingKey", tick);
+		rabbitTemplate.convertAndSend(TickConstant.TOPIC_NAME, TickConstant.ROUTING_KEY, tick);
 
 	}
 
