@@ -5,11 +5,11 @@ Description
 
 1. This application provides APIs which process tick values from various clients in the following format.
 
-TIMESTAMP=<linux timestamp>|PRICE=5.24|CLOSE_PRICE=|CURRENCY=EUR|RIC=AAPL.OQ
+     TIMESTAMP=<linux timestamp>|PRICE=5.24|CLOSE_PRICE=|CURRENCY=EUR|RIC=AAPL.OQ
 
-TIMESTAMP=<linux timestamp>|PRICE=5.24|CLOSE_PRICE=|CURRENCY=EUR|RIC=IBM.N
+     TIMESTAMP=<linux timestamp>|PRICE=5.24|CLOSE_PRICE=|CURRENCY=EUR|RIC=IBM.N
 
-TIMESTAMP=<linux timestamp>|PRICE=|CLOSE_PRICE=7.5|CURRENCY=EUR|RIC=AAPL.OQ
+     TIMESTAMP=<linux timestamp>|PRICE=|CLOSE_PRICE=7.5|CURRENCY=EUR|RIC=AAPL.OQ
 
 2. API with resource path solactive/ticks is used to consume the tick values.
 
