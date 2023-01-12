@@ -3,7 +3,7 @@
 Description
 -------------
 
-1. This application provides APIs which process tick values from various clients in the following format.
+1. This application provides APIs which process tick values from various clients provided in the following format.
 
      TIMESTAMP=<linux timestamp>|PRICE=5.24|CLOSE_PRICE=|CURRENCY=EUR|RIC=AAPL.OQ
 
@@ -11,33 +11,37 @@ Description
 
      TIMESTAMP=<linux timestamp>|PRICE=|CLOSE_PRICE=7.5|CURRENCY=EUR|RIC=AAPL.OQ
 
-2. API with resource path solactive/ticks is used to consume the tick values.
+2. API with resource path as "solactive/ticks" is used to consume the tick values.
 
-3. Only ADMIN users will have previlege to lookup the tick values for a specified ric with API of /solactive/tics/ric
+3. Only ADMIN users will have the previlege to search tick values for any given RIC.
 
-4. There is an option for users to export the tick values for a specified ric where close price is not empty.
+4. Users are given an option to download tick values with a valid close price as a .CSV file
+     
+5. RabbitMQ concurrency is leveraged to enhance the perfomance.
+     
+     Current implementation makes use of 4 concurrent consumers which can be modified according to the load expected
+   
+     ![image](https://user-images.githubusercontent.com/108806756/212099435-5f59a95d-870c-4c53-bc57-f1e1c9b21859.png)
 
-     Tick values will be exported as CSV files in users local repository.
+5. Swagger has been used for documentation purpose.
 
-5. swagger implementation has been done for a better understanding and testing. It can be accessed via following url once the application is up.
-
-http://localhost:8080/swagger-ui/index.html
-
-![image](https://user-images.githubusercontent.com/108806756/211883408-a9a8801c-b7d3-4963-9dd6-c56a098cc7bc.png)
+    ![image](https://user-images.githubusercontent.com/108806756/211883408-a9a8801c-b7d3-4963-9dd6-c56a098cc7bc.png)
 
 
 Assumptions
 --------------
 
-1. Tick values with future timestamps are not allowed
+1. Input Tick values are in TEXT format and Output from search will be in JSON 
 
-2. Tick price can not be negative
+2. Tick values with future timestamps are not allowed
 
-3. Ric cannot be empty
+3. Tick price can not be negative
 
-4. Application can hanle upto 50,000 tick values in a single request.
+4. RIC cannot be empty
 
-5. Modification of tick values is not allowed. The tick values always be inserted.
+5. Expected message count is assumeed to be 50,000. This is set as the initial value for Concurrent hashmap.
+
+6. Modification of tick values is not allowed. The tick values will always be inserted.
 
 Technologies Used
 -----------------
@@ -54,11 +58,15 @@ Technologies Used
 
 Improvements
 ------------
-1. To imporve the latency and throughput of the application Work Queues (aka: Task Queues) or LAMAX Disruptor could be introduced
+1. Scope for Docker file or similar to run the application in a container
+
+2. To imporve the latency and throughput,any other kind of asynchronus event processing architectures could be introduced. eg  LAMAX Disruptor
  
-     We can create concurrent consumers to easily parallelise the work
+3. Scope for better test coverage
+
+4. Extensive documentation
  
-2. More intergation tests could be added
- 
+5. Option for users to send the exported .CSV file into a given mail ID
+
  
  Thank you!
