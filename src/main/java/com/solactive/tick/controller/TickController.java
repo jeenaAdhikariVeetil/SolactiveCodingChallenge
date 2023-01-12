@@ -41,8 +41,13 @@ public class TickController {
 	/**
 	 * 
 	 * @param tick
-	 * @return HTTP status 201 when tick is consumed and HTTP status 204 when tick
+	 * 
+	 * @return HTTP status 201 when tick is consumed 
+	 * 
+	 *  HTTP status 204 when tick
 	 *         is invalid
+	 *         
+	 *  HTTP status 500 when there is an issue while sending the message through MQ       
 	 */
 
 	@PostMapping(path = "/ticks", consumes = MediaType.TEXT_PLAIN_VALUE)
@@ -66,6 +71,8 @@ public class TickController {
 	 * 
 	 * @param ric
 	 * @return HTTP status 200 when tick values are retrieved
+	 * 
+	 * HTTP status 204 when no ticks are available
 	 */
 
 	@GetMapping("/ticks/{ric}")

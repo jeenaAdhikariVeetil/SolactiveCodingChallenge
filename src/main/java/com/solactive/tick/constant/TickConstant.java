@@ -19,6 +19,9 @@ public class TickConstant {
 	public static final String INVALID_TICKS="Please provide the valid tick values";
 	public static final String EXPORT_ERROR="Error occurred during export to CSV";
 	public static final String EMPTY_EXPORT="No Data to export";
+	public static final String EMPTY_TICKS="No ticks are available";
+	public static final String AMQP_ERROR="Internal error while inserting the the tick value";
+	
 	
 	
 }
